@@ -1,0 +1,23 @@
+#runtime: php55
+#api_version: 1
+
+env: flex
+runtime: custom
+runtime_config:
+  document_root: /app
+
+handlers:
+- url: /.*
+  script: helloworld.php
+
+  
+env_variables:
+  # Replace USER, PASSWORD, DATABASE, and CONNECTION_NAME with the
+  # values obtained when configuring your Cloud SQL instance.
+  MYSQL_DSN: mysql:unix_socket=/cloudsql/php-app-200603:us-east1:mysql;dbname=test
+  MYSQL_USER: root
+  MYSQL_PASSWORD: 1qaz@WSX
+  
+# Use the connection name obtained when configuring your Cloud SQL instance.
+beta_settings:
+    cloud_sql_instances: "php-app-200603:us-east1:mysql"
